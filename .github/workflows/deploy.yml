@@ -53,6 +53,7 @@ jobs:
             cat ./vars.env > ./.env
             cat ./secrets.env >> ./.env
             sed -i 's/MASTER_//g' ./.env
+            rm -rf dist
             docker-compose down
             docker-compose up -d --build
             docker system prune -af
