@@ -19,7 +19,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Копируем .env (если нужен)
-COPY .env* .
+# COPY .env* .
 
 ARG COOKIE_DOMAIN
 ENV NEXT_PUBLIC_COOKIE_DOMAIN=$COOKIE_DOMAIN
@@ -27,7 +27,7 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # Удаляем старую сборку перед билдом
-RUN rm -rf dist
+# RUN rm -rf dist
 
 RUN npm run build
 
