@@ -37,6 +37,12 @@ jobs:
           file: vars.env
           exclude: DEV_*, AI_*
 
+      - name: Build project locally
+        run: |
+          rm -rf dist
+          npm install
+          npm run build
+
       # 4. Копируем репозиторий и env на сервер
       - name: Sync code to server
         run: |
