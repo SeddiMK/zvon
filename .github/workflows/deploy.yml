@@ -53,8 +53,6 @@ jobs:
             cat ./vars.env > ./.env
             cat ./secrets.env >> ./.env
             sed -i 's/MASTER_//g' ./.env
-            export COMPOSE_PROJECT_NAME=zvon
-            export NGINX_PORT=80
             docker-compose down
             docker-compose up -d --build
             docker system prune -af
