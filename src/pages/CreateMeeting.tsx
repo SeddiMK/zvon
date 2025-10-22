@@ -19,6 +19,7 @@ import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 
 const URL_VIDEO = 'https://video.zvon.online';
+const ROOM_NAME = Math.random().toString(36).substring(7);
 
 const CreateMeeting = () => {
   const navigate = useNavigate();
@@ -36,9 +37,7 @@ const CreateMeeting = () => {
 
   const handleCreateMeeting = () => {
     // Генерация ссылки на встречу
-    const generatedLink = `${URL_VIDEO}/${Math.random()
-      .toString(36)
-      .substring(7)}`;
+    const generatedLink = `${URL_VIDEO}/${ROOM_NAME}`;
     setMeetingLink(generatedLink);
     setShowSuccess(true);
 
@@ -125,7 +124,8 @@ const CreateMeeting = () => {
               <Button
                 size='lg'
                 variant='gradient'
-                onClick={() => navigate('/meeting/demo')}
+                // onClick={() => navigate('/meeting/demo')}
+                onClick={() => navigate(`/meeting/${ROOM_NAME}`)}
               >
                 <Video className='mr-2 h-4 w-4' />
                 Войти в комнату
