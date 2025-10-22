@@ -11,9 +11,11 @@ interface CallProps {
   userEmail?: string;
 }
 
+const DOMAIN = 'video.zvon.online';
+
 export const Call = ({
-  roomName,
-  displayName,
+  roomName = 'test',
+  displayName = 'test',
   isGroupSession = false,
   onApiReady,
   onReadyToClose,
@@ -93,8 +95,8 @@ export const Call = ({
       )}
 
       <JitsiMeeting
-        domain='meet.jit.si'
-        roomName={roomName}
+        domain={DOMAIN}
+        roomName={`room-${roomName}`}
         configOverwrite={configOverwrite}
         interfaceConfigOverwrite={interfaceConfigOverwrite}
         userInfo={{
