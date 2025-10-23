@@ -97,8 +97,9 @@ export const Call = ({
       <JitsiMeeting
         domain={DOMAIN}
         roomName={`room-${roomName}`}
-        configOverwrite={configOverwrite}
-        interfaceConfigOverwrite={interfaceConfigOverwrite}
+        // TODO setting default
+        // configOverwrite={configOverwrite}
+        // interfaceConfigOverwrite={interfaceConfigOverwrite}
         userInfo={{
           displayName: displayName,
           email: userEmail,
