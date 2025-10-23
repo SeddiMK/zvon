@@ -2,8 +2,8 @@ version: '3'
 
 services:
   frontend:
-    mem_limit: 4g
-    memswap_limit: 6g
+    # mem_limit: 4g
+    # memswap_limit: 6g
     container_name: ${COMPOSE_PROJECT_NAME}
     restart: unless-stopped
     build:

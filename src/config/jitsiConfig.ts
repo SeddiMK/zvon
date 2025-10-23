@@ -1,6 +1,6 @@
 const baseConfigOverwrite = {
   appName: 'Mindloom',
-  disableAudioLevels: false, // Можно включить или выключить
+  disableAudioLevels: false,
   constraints: {
     video: {
       height: { ideal: 720, max: 1080, min: 240 },
