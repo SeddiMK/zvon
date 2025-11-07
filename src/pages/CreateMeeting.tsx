@@ -147,7 +147,7 @@ const CreateMeeting = () => {
   return (
     <div className='min-h-screen bg-background'>
       <header className='border-b border-border bg-card'>
-        <div className='container mx-auto px-4 h-16 flex items-center justify-between'>
+        <div className='container mx-auto px-4 h-16 flex items-center justify-between max-w-3xl'>
           <Button variant='ghost' onClick={() => navigate('/dashboard')}>
             <ArrowLeft className='mr-2 h-4 w-4' />
             Назад
@@ -156,7 +156,6 @@ const CreateMeeting = () => {
             <Video className='h-5 w-5 text-primary' />
             <span className='font-semibold'>Создание встречи</span>
           </div>
-          <div className='w-20'></div>
         </div>
       </header>
 
