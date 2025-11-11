@@ -12,69 +12,117 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
+
+// TODO: вынести в отдельные константы
+const FEATURES = [
+  {
+    icon: <Video className='h-6 w-6' />,
+    title: 'HD Видеоконференции',
+    description:
+      'Качественная связь до 100+ участников с минимальной задержкой',
+  },
+  {
+    icon: <Shield className='h-6 w-6' />,
+    title: 'Интеграция с ЕСИА',
+    description: 'Авторизация через Госуслуги для максимальной безопасности',
+  },
+  {
+    icon: <FileText className='h-6 w-6' />,
+    title: 'Автотранскрипция',
+    description: 'AI-обработка встреч с созданием текстовых протоколов',
+  },
+  {
+    icon: <Lock className='h-6 w-6' />,
+    title: 'Запись и архив',
+    description: 'Автоматическое сохранение записей с защищенным доступом',
+  },
+  {
+    icon: <Users className='h-6 w-6' />,
+    title: 'Управление ролями',
+    description: 'Гибкая система прав для администраторов и участников',
+  },
+  {
+    icon: <Zap className='h-6 w-6' />,
+    title: 'Быстрый старт',
+    description: 'Создание комнаты в один клик, подключение по ссылке',
+  },
+];
+
+const USE_CASES = [
+  {
+    title: 'Образование',
+    description:
+      'Онлайн-уроки, лекции, родительские собрания с автоматической записью',
+    stats: '10,000+ школ',
+  },
+  {
+    title: 'Государственные органы',
+    description:
+      'Совещания, брифинги, межведомственные встречи с полной конфиденциальностью',
+    stats: '500+ организаций',
+  },
+  {
+    title: 'Телемедицина',
+    description: 'Консультации с подтверждением личности через ЕСИА',
+    stats: '2,000+ врачей',
+  },
+  {
+    title: 'Корпоративный сектор',
+    description:
+      'Деловые встречи, тренинги, вебинары для команд любого размера',
+    stats: '15,000+ компаний',
+  },
+];
+
+const PRICING = [
+  {
+    name: 'FREE',
+    price: '0 ₽',
+    period: 'навсегда',
+    description: 'Для небольших команд',
+    features: [
+      'До 10 участников',
+      '40 минут на встречу',
+      'Базовая запись',
+      'Email поддержка',
+    ],
+  },
+  {
+    name: 'BASIC',
+    price: '2,990 ₽',
+    period: 'в месяц',
+    description: 'Для школ и малых организаций',
+    features: [
+      'До 50 участников',
+      'Неограниченное время',
+      'Запись в HD',
+      'Автотранскрипция',
+      'Интеграция с ЕСИА',
+      'Приоритетная поддержка',
+    ],
+    popular: true,
+  },
+  {
+    name: 'PRO',
+    price: '9,990 ₽',
+    period: 'в месяц',
+    description: 'Для крупных организаций',
+    features: [
+      'До 100+ участников',
+      'Все функции BASIC',
+      'AI-резюме встреч',
+      'Breakout rooms',
+      'Брендирование',
+      'Выделенный менеджер',
+      'SLA 99.9%',
+    ],
+  },
+];
 
 const Landing = () => {
   const navigate = useNavigate();
-
-  const features = [
-    {
-      icon: <Video className='h-6 w-6' />,
-      title: 'HD Видеоконференции',
-      description:
-        'Качественная связь до 100+ участников с минимальной задержкой',
-    },
-    {
-      icon: <Shield className='h-6 w-6' />,
-      title: 'Интеграция с ЕСИА',
-      description: 'Авторизация через Госуслуги для максимальной безопасности',
-    },
-    {
-      icon: <FileText className='h-6 w-6' />,
-      title: 'Автотранскрипция',
-      description: 'AI-обработка встреч с созданием текстовых протоколов',
-    },
-    {
-      icon: <Lock className='h-6 w-6' />,
-      title: 'Запись и архив',
-      description: 'Автоматическое сохранение записей с защищенным доступом',
-    },
-    {
-      icon: <Users className='h-6 w-6' />,
-      title: 'Управление ролями',
-      description: 'Гибкая система прав для администраторов и участников',
-    },
-    {
-      icon: <Zap className='h-6 w-6' />,
-      title: 'Быстрый старт',
-      description: 'Создание комнаты в один клик, подключение по ссылке',
-    },
-  ];
-
-  const useCases = [
-    {
-      title: 'Образование',
-      description:
-        'Онлайн-уроки, лекции, родительские собрания с автоматической записью',
-      stats: '10,000+ школ',
-    },
-    {
-      title: 'Государственные органы',
-      description:
-        'Совещания, брифинги, межведомственные встречи с полной конфиденциальностью',
-      stats: '500+ организаций',
-    },
-    {
-      title: 'Телемедицина',
-      description: 'Консультации с подтверждением личности через ЕСИА',
-      stats: '2,000+ врачей',
-    },
-    {
-      title: 'Корпоративный сектор',
-      description:
-        'Деловые встречи, тренинги, вебинары для команд любого размера',
-      stats: '15,000+ компаний',
-    },
-  ];
+  const { toast } = useToast();
 
   return (
     <div className='min-h-screen bg-background'>
@@ -149,7 +197,16 @@ const Landing = () => {
               >
                 Попробовать бесплатно
               </Button>
-              <Button size='xl' variant='outline'>
+              <Button
+                size='xl'
+                variant='outline'
+                onClick={() =>
+                  toast({
+                    title: 'В разработке',
+                    description: 'Данный раздел не доступен',
+                  })
+                }
+              >
                 Посмотреть демо
               </Button>
             </div>
@@ -185,9 +242,9 @@ const Landing = () => {
             </p>
           </div>
           <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {features.map((feature, i) => (
+            {FEATURES?.map((feature, i) => (
               <Card
-                key={i}
+                key={`feature-${i}`}
                 className='p-6 hover:shadow-card transition-shadow bg-card border-border'
               >
                 <div className='h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4'>
@@ -216,9 +273,9 @@ const Landing = () => {
             </p>
           </div>
           <div className='grid md:grid-cols-2 gap-6'>
-            {useCases.map((useCase, i) => (
+            {USE_CASES?.map((useCase, i) => (
               <Card
-                key={i}
+                key={`use_case-${i}`}
                 className='p-8 bg-card border-border hover:border-primary/50 transition-colors'
               >
                 <div className='flex items-start justify-between mb-4'>
@@ -246,52 +303,10 @@ const Landing = () => {
             </p>
           </div>
           <div className='grid md:grid-cols-3 gap-8 max-w-5xl mx-auto'>
-            {[
-              {
-                name: 'FREE',
-                price: '0 ₽',
-                period: 'навсегда',
-                description: 'Для небольших команд',
-                features: [
-                  'До 10 участников',
-                  '40 минут на встречу',
-                  'Базовая запись',
-                  'Email поддержка',
-                ],
-              },
-              {
-                name: 'BASIC',
-                price: '2,990 ₽',
-                period: 'в месяц',
-                description: 'Для школ и малых организаций',
-                features: [
-                  'До 50 участников',
-                  'Неограниченное время',
-                  'Запись в HD',
-                  'Автотранскрипция',
-                  'Интеграция с ЕСИА',
-                  'Приоритетная поддержка',
-                ],
-                popular: true,
-              },
-              {
-                name: 'PRO',
-                price: '9,990 ₽',
-                period: 'в месяц',
-                description: 'Для крупных организаций',
-                features: [
-                  'До 100+ участников',
-                  'Все функции BASIC',
-                  'AI-резюме встреч',
-                  'Breakout rooms',
-                  'Брендирование',
-                  'Выделенный менеджер',
-                  'SLA 99.9%',
-                ],
-              },
-            ].map((plan, i) => (
+            {/* //TODO: настроить высоту карточки '0' */}
+            {PRICING?.map((plan, i) => (
               <Card
-                key={i}
+                key={`pricing-${i}`}
                 className={`p-8 relative ${
                   plan.popular ? 'border-primary shadow-card' : 'border-border'
                 } bg-card`}
