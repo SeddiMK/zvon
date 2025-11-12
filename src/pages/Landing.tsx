@@ -329,7 +329,7 @@ const Landing = () => {
                     {plan.description}
                   </p>
                 </div>
-                <ul className='space-y-3 mb-8'>
+                <ul className='space-y-3 mb-8 h-full max-h-[226px] overflow-y-auto'>
                   {plan.features.map((feature, j) => (
                     <li key={j} className='flex items-start gap-2 text-sm'>
                       <CheckCircle2 className='h-5 w-5 text-success shrink-0 mt-0.5' />
