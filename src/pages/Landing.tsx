@@ -303,7 +303,6 @@ const Landing = () => {
             </p>
           </div>
           <div className='grid md:grid-cols-3 gap-8 max-w-5xl mx-auto'>
-            {/* //TODO: настроить высоту карточки '0' */}
             {PRICING?.map((plan, i) => (
               <Card
                 key={`pricing-${i}`}
