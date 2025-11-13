@@ -195,11 +195,11 @@ const CreateMeeting = () => {
                 <div>
                   <Label htmlFor='date'>Дата</Label>
                   <div className='relative mt-1'>
-                    <Calendar className='absolute left-3 top-3 h-4 w-4 text-muted-foreground' />
+                    {/* <Calendar className='absolute left-3 top-3 h-4 w-4 text-muted-foreground' /> */}
                     <Input
                       id='date'
                       type='date'
-                      className='pl-10'
+                      // className='pl-10'
                       defaultValue='2025-11-15'
                     />
                   </div>
@@ -208,11 +208,11 @@ const CreateMeeting = () => {
                 <div>
                   <Label htmlFor='time'>Время</Label>
                   <div className='relative mt-1'>
-                    <Clock className='absolute left-3 top-3 h-4 w-4 text-muted-foreground' />
+                    {/* <Clock className='absolute left-3 top-3 h-4 w-4 text-muted-foreground' /> */}
                     <Input
                       id='time'
                       type='time'
-                      className='pl-10'
+                      // className='pl-10'
                       defaultValue='14:00'
                     />
                   </div>
